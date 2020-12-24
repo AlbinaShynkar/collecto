@@ -10,16 +10,15 @@ public class Field {
 	 * Stores static array list of string with letters which represent rows on board 	
 	 */
 	public static final ArrayList<String> characters = 
-			new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I"));
+			new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F", "G"));
   /**
 * Stored character value of X.
-* @requires Stored character value of X must be of the values A,B,C,D,E,F,G,H,I (capital)
+* @requires Stored character value of X must be of the values A,B,C,D,E,F,G (capital)
 */
   private char coorX;
   /**
 * It is assumed that the value Y matches value of X. 
-* (See more in the final report).
-* @requires Stored value of Y value must be : 1<=y<=9.
+* @requires Stored value of Y value must be : 1<=y<=7.
 */
   private int coorY;
 	/**
@@ -55,45 +54,41 @@ public class Field {
 	 * @return true if marble in field is colored empty
 	 */
 	public static boolean isEmpty(Field field) {
-		if(field.getMarble().getColor()==Colors.EMPTY) {
+		if(field.getBall().getColor()==Colors.EMPTY) {
 			return true;
 		}
 		return false;
 	}
 	/**
-	 * Checks whether field has marble with color inside(not Colors.EMPTY)
-	 * @return true if given field has colored marble , false if field has marble with color empty inside
+	 * Checks whether field has ball with color inside(not Colors.EMPTY)
+	 * @return true if given field has colored ball , false if field has ball with color empty inside
 	 */
-	public boolean hasMarble(Field field) {
-		if(field.getMarble().getColor()==Colors.RED
-				||field.getMarble().getColor()==Colors.ORANGE
-				||field.getMarble().getColor()==Colors.YELLOW
-				||field.getMarble().getColor()==Colors.GREEN
-				||field.getMarble().getColor()==Colors.BLUE
-				||field.getMarble().getColor()==Colors.PINK) {
+	public boolean hasBall(Field field) {
+		if(field.getBall().getColor()!=Colors.EMPTY) {
 			return true;
 		}
 		return false;
 	}
-	
-	/**
-	 * Decreases the value of this.x in alphabetical order (eg. A -> B) 
-	 * @ensures this.x decremented by one in alphabetical order
-	 */
-	public char upRow() {
-		int code = (int)this.coorX;
-		code++;
-		char result = (char) code;
-		return result;
-	}
-
 	/**
 	 * Increases the value of this.x in alphabetical order (eg. B -> A)
 	 * @ensures this.x incremented by one in alphabetical order
 	 */
-	public char downRow(){
+
+	public char upRow() {
 		int code = (int)this.coorX;
 		code--;
+		char result = (char) code;
+		return result;
+
+	}
+
+	/**
+	 * Decreases the value of this.x in alphabetical order (eg. A -> B) 
+	 * @ensures this.x decremented by one in alphabetical order
+	 */
+	public char downRow(){
+		int code = (int)this.coorX;
+		code++;
 		char result = (char) code;
 		return result;
 	}
@@ -115,61 +110,22 @@ public class Field {
 	}
 	
 	/**
-	 *Find coordinate with this.x decreased by one (eg.A -> B) and this.y stays the same
-	 *@ensures upRow() performs for this.x, this.y value is not changed 
-	 */
-	public String upperLeft(){
-		//String result = this.upRow() + String.valueOf(this.leftColumn()) +"";
-		String result = this.upRow() + String.valueOf(this.coorY) +"";
-		return result;
-	}
-	
-	/**
-	 * Find coordinate with this.x decreased by one (eg.A -> B) and this.y increased by 1
-	 * @ensures upRow() performs for this.x, rightColumn() performs for this.y
-	 */
-	public String upperRight(){
-		String result = this.upRow() + String.valueOf(this.rightColumn()) +"";
-		return result;
-	}
-	
-	/**
-	 * Find coordinate with this.x increased by one (eg.B -> A) and this.y decreased by 1
-	 * @ensures downRow() performs for this.x, leftColumn() performs for this.y
-	 */
-	public String bottomLeft(){
-		String result= this.downRow()+ String.valueOf(this.leftColumn()) +"";
-		return result;
-	}
-	
-	/**
-	 * Find coordinate with this.x increased by one (eg.B -> A) and this.y stays the same
-	 * @ensures downRow() performs for this.x, this.y value is not changed 
-	 */
-	public String bottomRight(){
-		String result= this.downRow()+ String.valueOf(this.coorY) +"";
-		return result;
-	}
-	
-	/**
 	 *Returns a field relative to the field in the specified direction. 
 	 *@requires field has coordinates of x y that are within the boundaries of the board.
 	 *@return Field that is relative to the given field with the given direction.
 	 */
 	public String getRelativeField(int direction){
 		if(direction==1) { 
-			return this.upperLeft();
+			String result = this.coorX+ String.valueOf(this.leftColumn()) + "";
+			return result;
 		}else if(direction==2) {
-			return this.upperRight();
+			String result = this.coorX+ String.valueOf(this.upRow()) + "";
+			return result;
 		}else if(direction==3) {
-			String result=this.coorX+ String.valueOf(this.rightColumn())+"";
+			String result=this.coorX+ String.valueOf(this.rightColumn()) + "";
 			return result;
 		}else if(direction==4) {
-			return this.bottomRight();
-		}else if(direction==5) {
-			return this.bottomLeft();
-		}else if(direction==6) {
-			String result=this.coorX+ String.valueOf(this.leftColumn())+"";
+			String result = this.coorX+ String.valueOf(this.downRow()) + "";
 			return result;
 		}
 		return null;
@@ -180,7 +136,7 @@ public class Field {
 	 * Return an array of fields relative to the fields (given in the parameter) in the specified direction. 
 	 * @requires Field objects have coordinates that are within the board.
 	 * @return An ArrayList of Field that maintains the order of the fields parameter.
-	 * @ensures The order of Field objects inside the returned ArrayList corresponds to the order of the input fields. (Reference to the final report)
+	 * @ensures The order of Field objects inside the returned ArrayList corresponds to the order of the input fields.
 	 */
 //	public static ArrayList<Field> getRelativeFields(int direction, ArrayList<Field> fields){
 //		ArrayList<Field> arrlist= new ArrayList<Field>();
@@ -192,7 +148,7 @@ public class Field {
 //			char charValue= x.charAt(0);
 //			int intValue= Integer.parseInt(y);
 //			
-//			Field newField= new Field(charValue, intValue,fields.get(i).getMarble());
+//			Field newField= new Field(charValue, intValue,fields.get(i).getBall());
 //			
 //			Field f1= new Field
 //					setCoordinates(getRelativeField(direction));
@@ -261,11 +217,11 @@ public class Field {
 	public int getCoordinateY(){
 		return this.coorY;
 	}
-	public Ball getMarble() {
+	public Ball getBall() {
 		return this.ball;
 	}
 	    
-	public void setMarble(Ball ball) {
+	public void setBall(Ball ball) {
 	    this.ball= ball;
 	}
 }

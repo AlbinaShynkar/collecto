@@ -7,7 +7,7 @@ public class Ball {
 	
 //  --CONSTRUCTORS--
 	/**
-	 * Constructor of a marble with certain color or color empty. //TO-DO(Reference to final report colors of marbles)
+	 * Constructor of a ball with certain color or color empty. //TO-DO(Reference to final report colors of balls)
 	 * @param color
 	 */
 	public Ball(Colors color) {

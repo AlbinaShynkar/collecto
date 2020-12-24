@@ -26,7 +26,7 @@ public class Board {
 	
 	// --ORIGINAL METHODS--
 	/**
-	 * Creates a board with hash map of fields with marbles set to empty.
+	 * Creates a board with hash map of fields with balls set to empty.
 	 * 	Is called by constructor.
 	 * @return board data structure
 	 */
@@ -44,7 +44,7 @@ public class Board {
 	}
 	
 	/**
-	 * Checks marbles are not adjacent to make sure board is set up correctly.
+	 * Checks balls are not adjacent to make sure board is set up correctly.
 	 */
 	public boolean adjacent() {
 		//TO-DO
@@ -62,7 +62,7 @@ public class Board {
 	}
 	
 	/**
-	 * Check whether there are adjacent marbles on horizontal
+	 * Check whether there are adjacent balls on horizontal
 	 * positions anywhere on board after move.
 	 */
 	public boolean hasHorizontal() {
@@ -70,7 +70,7 @@ public class Board {
 	}
 	
 	/**
-	 * Check whether there are adjacent marbles on vertical
+	 * Check whether there are adjacent balls on vertical
 	 * positions anywhere on board after move.
 	 */
 	public boolean hasVertical() {
@@ -81,7 +81,7 @@ public class Board {
 	
 	/**
 	   * Gets field by its string coordinate given in format 
-	   * "C2B" where C is row, 2 column, B-blue color of marble.
+	   * "C2B" where C is row, 2 column, B-blue color of ball.
 	   * @requires coordinates!=null
 	   * @param coordinates string with coordinates of field (eg."C2B") 
 	   * 	where C is row, 2 is column, B is color(blue)
@@ -104,13 +104,13 @@ public class Board {
 	  }
 	  
 	  /**
-	   * Gets marble by its coordinate given in string format
+	   * Gets ball by its coordinate given in string format
 	   * @requires coordinates!=null
 	   * @param coordinated string with coordinates of field (eg."C2B") 
 	   * 	where C is row, 2 is column, B is color(black)
-	   * @return marble with such coordinates as were given in string coordinates
+	   * @return ball with such coordinates as were given in string coordinates
 	   */
-	  public Ball getMarbleByID(String coordinates) {
+	  public Ball getBallByID(String coordinates) {
 		  //TO-DO
 		  return null;
 	  }
