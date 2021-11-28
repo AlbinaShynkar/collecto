@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"utils.NetworkProvider.Model","c":"Strategy","l":"getName()"},{"p":"utils.NetworkProvider.Model","c":"Strategy","l":"makeMove(BoardApplication)","url":"makeMove(application.BoardApplication)"}]
