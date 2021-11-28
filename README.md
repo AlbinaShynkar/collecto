@@ -2,7 +2,7 @@
 
 Board game Collecto developed in Java.
 
-##How to install and run
+How to install and run
 
 When you get all the files you see the src folder where the project implementation is. You will need to work only with few files to make program run. 
 
